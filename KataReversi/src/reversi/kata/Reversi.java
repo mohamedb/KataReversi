@@ -53,7 +53,14 @@ public class Reversi {
 		return output;
 	}
 	
-	public boolean isEnemyNearby(String WorB,int ligne,int colonne) {	
+	public boolean isEnemyNearby(String WorB,int ligne,int colonne){
+		countEnemyNearby(ligne,colonne);
+		if(this.count_nearby>0)
+			return true;
+		return false;
+	}
+	
+	public void countEnemyNearby(int ligne,int colonne){
 		for(int i=-1;i<2;i++){
 			for(int j=-1;j<2;j++){
 				if(lines_to_dots[ligne+i][colonne+j].equals("W")){
@@ -63,9 +70,6 @@ public class Reversi {
 				}
 			}
 		}
-		if(this.count_nearby>0)
-			return true;
-		return false;
 	}
 
 }
