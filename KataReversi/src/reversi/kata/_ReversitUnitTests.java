@@ -2,16 +2,11 @@ package reversi.kata;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
+public class _ReversitUnitTests {
 
-public class ReversitUnitTests {
-	Reversi game;
-	@Before
-	public void initTests(){
-		this.game= new Reversi();
-	}
+	
 	@Test
 	public void shouldSuccessOnDirectionUpDownLeftRight() {
 		String input= 
@@ -34,8 +29,8 @@ public class ReversitUnitTests {
 			    ". . . . . . . . \n" +
 			    ". . . . . . . . \n" +
 			    "B";
-		
-		assertEquals(output,this.game.printLegalMoves(input));
+		Reversi game= new Reversi();
+		assertEquals(output,game.printLegalMoves(input));
 	}
 	
 	@Test
@@ -60,8 +55,8 @@ public class ReversitUnitTests {
 			    ". . . . . . . . \n" +
 			    ". . . . . . . . \n" +
 			    "B";
-
-		assertEquals(output,this.game.printLegalMoves(input));
+		Reversi game= new Reversi();
+		assertEquals(output,game.printLegalMoves(input));
 	}
 	@Test
 	public void shouldSuccessOnDirectionAntiSlashDown() {
@@ -85,30 +80,8 @@ public class ReversitUnitTests {
 			    ". . 0 . . . . . \n" +
 			    ". . . . . . . . \n" +
 			    "B";
+		Reversi game= new Reversi();
 		assertEquals(output,game.printLegalMoves(input));
 	}
-	@Test
-	public void shouldSuccessOnTestAntislashDown() {
-		String input= 
-				". . . . . . . .\n" +
-				". . . . . . . .\n" +
-				". . . . . . . .\n" +
-				". . . W B . . .\n" +
-				". . . W B . . .\n" +
-				". . . . . . . .\n" +
-				". . . . . . . .\n" +
-				". . . . . . . .\n" + 
-				"B";
-		String output=
-				". . . . . . . . \n" +
-			    ". . . . . . . . \n" +
-			    ". . 0 . . . . . \n" +
-			    ". . 0 W B . . . \n" +
-			    ". . 0 W B . . . \n" +
-			    ". . 0 . . . . . \n" +
-			    ". . . . . . . . \n" +
-			    ". . . . . . . . \n" +
-			    "B";
-		assertEquals(output,this.game.printLegalMoves(input));
-	}
+
 }
