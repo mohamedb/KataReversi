@@ -1,26 +1,26 @@
 package reversi.kata;
 
 public class Reversi {
-	String[] input_to_lines;
-	String[][] lines_to_dots= new String[10][];
-	Integer[][] enemy_xy=new Integer[8][2];
+	String[] inputToLines;
+	String[][] linesToDots= new String[10][];
+	Integer[][] enemeyAtXY=new Integer[8][2];
 	String direction="";
-	int count_nearby=0;
-	Direction in_direction;
+	int countNearby=0; 
+	Direction inDirection;
 	 
      
 	public void inputToMatrix(String input){
-		String[] input_to_lines= input.split("\n");	
+		String[] inputToLines= input.split("\n");	
 		for(int i=0;i<9;i++){
-			lines_to_dots[i]=input_to_lines[i].split(" ");
+			linesToDots[i]=inputToLines[i].split(" ");
 		}
-		 in_direction= new Direction(lines_to_dots);
+		 inDirection= new Direction(linesToDots);
 		}
 	public  String printLegalMoves(String input) {
 		this.inputToMatrix(input);
 		for(int i=1;i<7;i++){
 			for(int j=1;j<7;j++){	 
-				if(lines_to_dots[i][j].equals(".")){
+				if(linesToDots[i][j].equals(".")){
 					this.scanNearby(i, j);
 				}
 			}
@@ -30,14 +30,14 @@ public class Reversi {
 	public void scanNearby(int i, int j){
 		if(isEnemyNearby("B",i,j)){
 			this.addPossibleMove(i, j);
-			this.count_nearby=0;
+			this.countNearby=0;
 		}
 	}
 	public void addPossibleMove(int i, int j){
-		for(int m=0;m<this.count_nearby;m++){
-			in_direction.getDirection(i,j,this.enemy_xy[m][0],this.enemy_xy[m][1]);
-			if(in_direction.isFriendInDirection(this.enemy_xy[m][0],this.enemy_xy[m][1])){
-				this.lines_to_dots[i][j]="0";
+		for(int m=0;m<this.countNearby;m++){
+			inDirection.getDirection(i,j,this.enemeyAtXY[m][0],this.enemeyAtXY[m][1]);
+			if(inDirection.isFriendInDirection(this.enemeyAtXY[m][0],this.enemeyAtXY[m][1])){
+				this.linesToDots[i][j]="0";
 			}
 		}
 	}
@@ -45,7 +45,7 @@ public class Reversi {
 		String output="";
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){	 
-				output=output+lines_to_dots[i][j]+" ";
+				output=output+linesToDots[i][j]+" ";
 			}
 			output=output+"\n";
 		}
@@ -55,7 +55,7 @@ public class Reversi {
 	
 	public boolean isEnemyNearby(String WorB,int ligne,int colonne){
 		countEnemyNearby(ligne,colonne);
-		if(this.count_nearby>0)
+		if(this.countNearby>0)
 			return true;
 		return false;
 	}
@@ -63,10 +63,10 @@ public class Reversi {
 	public void countEnemyNearby(int ligne,int colonne){
 		for(int i=-1;i<2;i++){
 			for(int j=-1;j<2;j++){
-				if(lines_to_dots[ligne+i][colonne+j].equals("W")){
-					this.enemy_xy[this.count_nearby][0]=ligne+i;
-					this.enemy_xy[this.count_nearby][1]=colonne+j;
-					this.count_nearby++;
+				if(linesToDots[ligne+i][colonne+j].equals("W")){
+					this.enemeyAtXY[this.countNearby][0]=ligne+i;
+					this.enemeyAtXY[this.countNearby][1]=colonne+j;
+					this.countNearby++;
 				}
 			}
 		}
