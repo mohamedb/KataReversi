@@ -4,11 +4,11 @@ public class Direction {
    
    String name="left";
    boolean find_friend=false;
-   String[][] lines_to_dots= new String[10][];
+   String[][] linesToDotes= new String[10][];
    
    
-   public Direction(String[][] lines_to_dots){
-	   this.lines_to_dots= lines_to_dots;
+   public Direction(String[][] linesToDotes){
+	   this.linesToDotes= linesToDotes;
    }
 
    public boolean isFriendInDirection(int x,int y){
@@ -18,8 +18,8 @@ public class Direction {
 			int h=x;
 			while(k<8){
 				k++;
-				return (lines_to_dots[x][k].equals("."))
-					||(lines_to_dots[x][k].equals("B"));
+				return (linesToDotes[x][k].equals("."))
+					||(linesToDotes[x][k].equals("B"));
 					
 
 			}
@@ -30,8 +30,8 @@ public class Direction {
 			int h=x;
 			while(k>0){
 				k--;
-				return(lines_to_dots[x][k].equals("."))
-					||(lines_to_dots[x][k].equals("B"));
+				return(linesToDotes[x][k].equals("."))
+					||(linesToDotes[x][k].equals("B"));
 					 
 
 			}
@@ -42,9 +42,9 @@ public class Direction {
 			int h=x;
 			while(h>0){
 				h--;
-				if(lines_to_dots[h][y].equals("."))
+				if(linesToDotes[h][y].equals("."))
 					return false;
-				else if(lines_to_dots[h][y].equals("B"))
+				else if(linesToDotes[h][y].equals("B"))
 					return true;
 
 			}
@@ -55,9 +55,9 @@ public class Direction {
 			int h=x;
 			while(h<8){
 				h++;
-				if(lines_to_dots[h][y].equals("."))
+				if(linesToDotes[h][y].equals("."))
 					return false;
-				else if(lines_to_dots[h][y].equals("B"))
+				else if(linesToDotes[h][y].equals("B"))
 					return true;
 
 			}
@@ -69,9 +69,9 @@ public class Direction {
 			while(h>0 || k>0){
 				k--;
 				h--;
-				if(lines_to_dots[h][k].equals("."))
+				if(linesToDotes[h][k].equals("."))
 					return false;
-				else if(lines_to_dots[h][k].equals("B"))
+				else if(linesToDotes[h][k].equals("B"))
 					return true;
 
 			}
@@ -83,9 +83,9 @@ public class Direction {
 			while(h<8 || k<8){
 				k++;
 				h++;
-				if(lines_to_dots[h][k].equals("."))
+				if(linesToDotes[h][k].equals("."))
 					return false;
-				else if(lines_to_dots[h][k].equals("B"))
+				else if(linesToDotes[h][k].equals("B"))
 					return true;
 
 			}
@@ -97,9 +97,9 @@ public class Direction {
 			while(h<8 || k>0){
 				k--;
 				h++;
-				if(lines_to_dots[h][k].equals("."))
+				if(linesToDotes[h][k].equals("."))
 					return false;
-				else if(lines_to_dots[h][k].equals("B"))
+				else if(linesToDotes[h][k].equals("B"))
 					return true;
 
 			}
@@ -111,9 +111,9 @@ public class Direction {
 			while(h>0 || k<8){
 				k++;
 				h--;
-				if(lines_to_dots[h][k].equals("."))
+				if(linesToDotes[h][k].equals("."))
 					return false;
-				else if(lines_to_dots[h][k].equals("B"))
+				else if(linesToDotes[h][k].equals("B"))
 					return true;
 
 			}
